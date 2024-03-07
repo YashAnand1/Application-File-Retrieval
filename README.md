@@ -4,7 +4,8 @@
 </div>
 
 ## Index
-[Tools Utilised](#Tools-Utilised)
+- [Tools Utilised](#Tools-Utilised)
+- [Listing Listening Programs & Executed Commands ](Listing-Listening-Programs-&-Executed-Commands)
 
 ## Tools Utilised
 - For finding details of Listening Programs
