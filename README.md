@@ -8,6 +8,7 @@
 - [Listing Executed Commands From Listening Programs](#Listing_Executed_Commands_From_Listening_Programs)
 - [Finding Package Names From Binaries](#Finding-Package-Names-From-Binaries)
 - [Finding Data And Conf Directories Using Dlocate](#Finding-Data-And-Conf-Directories-Using-Dlocate)
+- 
 
 ## Tools Utilised
 - For finding details of Listening Programs
@@ -65,7 +66,7 @@ systemd-resolved
 prometheus-node-exporter
 ```
 
-## Finding Data & Conf Directories Using Dlocate 
+## Finding Data And Conf Directories Using Dlocate  
 -  The`dlocate` tool helps with viewing dpkg information & acts as an alternative for `dpkg -L` or `dpkg -S`:
 ```
 dlocate --lsdir systemd-sysv
@@ -102,7 +103,7 @@ dlocate --lsdir prometheus-node-exporter
 dlocate --conf prometheus-node-exporter
 ```
 
-## Finding Remaining Logs From Lsof & Syslog
+## Finding Remaining Logs From Lsof And Syslog   
 - Using the `list opened files` tool, the remaining logs were retrieved:
 ```
 sudo lsof | grep postgres | grep log
@@ -110,7 +111,7 @@ sudo lsof | grep mysqld | grep log
 cat /var/log/syslog
 ```
 
-## Finding Remaining Configurations From Strace
+## Finding Remaining Configurations From Strace   
 - Utilised the OpenAt() Syscalls from the strace output for finding remaining files from each executed command of the remaining Programs:
 ```
 sudo strace -o mysql.txt -f /usr/sbin/mysqld
