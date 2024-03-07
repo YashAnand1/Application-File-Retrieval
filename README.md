@@ -23,7 +23,7 @@
     - `dlocate <pkg>, dlocate --conf <pkg>, dlocate --lsdir <pkg>`
     - `grep <service from netstat> /var/log/syslog`
 
-## Listing Executed Commands From Listening Programs  
+## Listing Executed Commands From Listening Programs
 - Retrieve Listening Programs & Process Details using **Netstat & Ps**:
     - Under the 'COMMAND' column, look for the executed commands
     - If they contain binary, config, log and data directory paths, save them
