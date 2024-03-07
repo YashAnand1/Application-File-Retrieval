@@ -7,7 +7,7 @@
 - [Tools Utilised](#Tools-Utilised)
 - [Listing Executed Commands From Listening Programs](#Listing_Executed_Commands_From_Listening_Programs)
 - [Finding Package Names From Binaries](#Finding-Package-Names-From-Binaries)
-- [Finding Data & Conf Directories Using Dlocate](#Finding-Data-&-Conf-Directories-Using-Dlocate)
+- [Finding Data And Conf Directories Using Dlocate](#Finding-Data-And-Conf-Directories-Using-Dlocate)
 
 ## Tools Utilised
 - For finding details of Listening Programs
