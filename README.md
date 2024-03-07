@@ -5,7 +5,9 @@
 
 ## Index
 - [Tools Utilised](#Tools-Utilised)
-- [Listing Listening Programs & Executed Commands ](Listing-Listening-Programs-&-Executed-Commands)
+- [Listing Executed Commands From Listening Programs](#Listing_Executed_Commands_From_Listening_Programs)
+- [Finding Package Names From Binaries](#Finding-Package-Names-From-Binaries)
+- [Finding Data & Conf Directories Using Dlocate](#Finding-Data-&-Conf-Directories-Using-Dlocate)
 
 ## Tools Utilised
 - For finding details of Listening Programs
@@ -20,7 +22,7 @@
     - `dlocate <pkg>, dlocate --conf <pkg>, dlocate --lsdir <pkg>`
     - `grep <service from netstat> /var/log/syslog`
 
-## Listing Listening Programs & Executed Commands 
+## Listing Executed Commands From Listening Programs  
 - Retrieve Listening Programs & Process Details using **Netstat & Ps**:
     - Under the 'COMMAND' column, look for the executed commands
     - If they contain binary, config, log and data directory paths, save them
