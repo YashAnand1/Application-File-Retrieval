@@ -1,4 +1,7 @@
+<div align = "center">
+
 # Retrieving Application Details
+</div>
 
 ## Tools Utilised
 - For finding details of Listening Programs
