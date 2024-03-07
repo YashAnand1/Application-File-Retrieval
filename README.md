@@ -8,7 +8,8 @@
 - [Listing Executed Commands From Listening Programs](#Listing-Executed-Commands-From-Listening-Programs)
 - [Finding Package Names From Binaries](#Finding-Package-Names-From-Binaries)
 - [Finding Data And Conf Directories Using Dlocate](#Finding-Data-And-Conf-Directories-Using-Dlocate)
-- 
+- [Finding Remaining Logs From Lsof And Syslog](#Finding-Remaining-Logs-From-Lsof-And-Syslog)
+- [Finding Remaining Configurations From Strace](#Finding-Remaining-Configurations-From-Strace)
 
 ## Tools Utilised
 - For finding details of Listening Programs
