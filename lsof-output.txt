@@ -1,3 +1,5 @@
+$ sudo lsof | grep postfix
+
 rsyslogd    1075                           syslog    6u     unix 0xffff9c57896a6000       0t0      28075 /var/spool/postfix/dev/log type=DGRAM (UNCONNECTED)
 rsyslogd    1075   1133 in:imuxso          syslog    6u     unix 0xffff9c57896a6000       0t0      28075 /var/spool/postfix/dev/log type=DGRAM (UNCONNECTED)
 rsyslogd    1075   1134 in:imklog          syslog    6u     unix 0xffff9c57896a6000       0t0      28075 /var/spool/postfix/dev/log type=DGRAM (UNCONNECTED)
