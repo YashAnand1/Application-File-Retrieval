@@ -73,10 +73,10 @@ root        3497  0.0  0.0  43104  2156 ?        Ss   Mar07   0:00 /usr/lib/post
 statd       1979  0.0  0.0   4640  1832 ?        Ss   Mar07   0:00 /sbin/rpc.statd
 systemd+     774  0.0  0.1  21020  8228 ?        Ss   Mar07   0:46 /lib/systemd/systemd-resolved
 ```
-    - `while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print}'; done'
-        - `while read pid; do ps -aux`: Initiating looping for entering each PID into pid variable & prints all listing processes in system
-        - `awk -v pid="$pid" '$2 == pid {print}'; done`: Output of `ps -aux` is filtered based on the second column of PID & entire output is printed - Loop closed with `; done`
-    - Detailed output can be accessed from [here]()
+- `while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print}'; done'
+    - `while read pid; do ps -aux`: Initiating looping for entering each PID into pid variable & prints all listing processes in system
+    - `awk -v pid="$pid" '$2 == pid {print}'; done`: Output of `ps -aux` is filtered based on the second column of PID & entire output is printed - Loop closed with `; done`
+- Detailed output can be accessed from [here]()
 
 ### Listing Files With LSOF
 `lsof | grep <listening program from netstat>` 
@@ -93,8 +93,8 @@ qmgr        3510                          postfix  rtd       DIR                
 qmgr        3510                          postfix  txt       REG                8,2     67968    9192560 /usr/lib/postfix/sbin/qmgr
 [. . .]
 ```
-    - `lsof`: Displays "List of opened files" and filters it on the basis of Listening Program Name
-    - Detailed output can be accessed from [here]()
+- `lsof`: Displays "List of opened files" and filters it on the basis of Listening Program Name
+- Detailed output can be accessed from [here]()
 
 ### Retrieving Files From SysCalls Using STRACE
 `strace -f <executed command from ps>` or `strace -o output.txt -fe openat <executed command from ps>`
@@ -109,9 +109,9 @@ qmgr        3510                          postfix  txt       REG                
 537291 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libssl.so.3", O_RDONLY|O_CLOEXEC) = 3
 [. . .]
 ```
-    - Saving all OpenAt SysCalls into an output file
-        - `strace -o output.txt`: Save the output of strace into a file
-        - `-fe openat`: `f` for child-processes & `e` for retrieving only OpenAt SysCall as the expression
+- Saving all OpenAt SysCalls into an output file
+    - `strace -o output.txt`: Save the output of strace into a file
+    - `-fe openat`: `f` for child-processes & `e` for retrieving only OpenAt SysCall as the expression
 
 ### Finding Package Names Using DPKG
 `sudo netstat -tulnp | awk '{print $7}' | grep / | cut -d/ -f1 | sort -u | while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print $11}' | sort -u; done | xargs -I {} dpkg -S {} | cut -f1 -d:`
@@ -129,9 +129,9 @@ systemd-resolved
 merecat
 prometheus-node-exporter
 ```
-    - For retrieving the package name from the binaries
-        -  `xargs -I {} dpkg -S {}`: [`xargs -I`](https://stackoverflow.com/questions/68088351/what-is-the-syntax-for-xargs-i-flag-argument) captures the output and places it after [`dpkg -S`](https://phoenixnap.com/kb/dpkg-command) for Searching (-S) its package names 
-        - `cut -f1 -d:`: For retrieving only the package names out of `packageName: packageBinary` output
+- For retrieving the package name from the binaries
+    -  `xargs -I {} dpkg -S {}`: [`xargs -I`](https://stackoverflow.com/questions/68088351/what-is-the-syntax-for-xargs-i-flag-argument) captures the output and places it after [`dpkg -S`](https://phoenixnap.com/kb/dpkg-command) for Searching (-S) its package names 
+    - `cut -f1 -d:`: For retrieving only the package names out of `packageName: packageBinary` output
 
 ### Locating Most Files Using DLOCATE
 `dlocate <pkg>, dlocate --conf <pkg>, dlocate --lsdir <pkg>`
@@ -183,10 +183,10 @@ $ dlocate --lsdir postfix
 /etc/ppp/ip-up.d
 [. . .]
 ```
-    - From the previous step, the package names are placed after each command for retrieving the required files
-        - `dlocate <pkg>`: To "list records that match either package or files names" - Records matching package name are displayed
-        - `dlocate --conf <pkg>`: To "list conffiles in package"
-        - `dlocate --lsdir <pkg>`: To "list only the directories in package"
+- From the previous step, the package names are placed after each command for retrieving the required files
+    - `dlocate <pkg>`: To "list records that match either package or files names" - Records matching package name are displayed
+    - `dlocate --conf <pkg>`: To "list conffiles in package"
+    - `dlocate --lsdir <pkg>`: To "list only the directories in package"
 
 ### Retrieving Remaining Logs From SysLog
 `grep <service from netstat> /var/log/syslog`
@@ -202,8 +202,8 @@ $ grep rpc.statd /var/log/syslog
 2024-03-05T12:58:43.847260+05:30 yashanand systemd[1]: Starting rpc-statd-notify.service - Notify NFS peers of a restart...
 [. . .]
 ```
-    - The remaining logs yet to be retrieved for the Listening Programs can be filtered out from `/var/log/syslog`
-    - Some applications by default store their logs in here but it is also the "common file for logs" - Studied more on it from [here](https://www.logicmonitor.com/blog/what-is-syslog#:~:text=Syslog%2C%20an%20abbreviation%20for%20system,different%20parts%20of%20the%20system.)
+- The remaining logs yet to be retrieved for the Listening Programs can be filtered out from `/var/log/syslog`
+- Some applications by default store their logs in here but it is also the "common file for logs" - Studied more on it from [here](https://www.logicmonitor.com/blog/what-is-syslog#:~:text=Syslog%2C%20an%20abbreviation%20for%20system,different%20parts%20of%20the%20system.)
 
 ## Retrieved Files
 
