@@ -206,6 +206,8 @@ $ grep rpc.statd /var/log/syslog
 
 ## Retrieved Files
 
+The Log, Binary, Configuration and Data paths that I was able to retrieve using these tools have been presented below for reference. 
+
 | S. No | Listening Service | Package Name | Binary File/Directory | Configuration File/Directory | Log File/Directory | Data File/Directory |
 |-------|-------------------|--------------|-----------------------|------------------------------|--------------------|---------------------|
 | 1     | init              | systemd-sysv | /sbin/init            | N/A                          | /var/log/syslog    | N/A                 |
