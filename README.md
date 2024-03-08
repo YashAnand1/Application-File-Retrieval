@@ -43,6 +43,7 @@ Out of the above 2 tools, `lsof` and `strace` proved to be the most powerful in 
 8380
 965
 ```
+
     - `sudo netstat -tlnp`
         - Helps with displaying the PIDs of Listening Programs  
         - `-tlnp`: TCP+Listening+Numeric+Programs 
