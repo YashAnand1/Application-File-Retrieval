@@ -79,8 +79,9 @@ systemd+     774  0.0  0.1  21020  8228 ?        Ss   Mar07   0:46 /lib/systemd/
 - Detailed output can be accessed from [here]()
 
 ### Listing Files With LSOF
-`lsof | grep <listening program from netstat>` 
+`sudo lsof | grep <listening program from netstat>` 
 ```
+$ sudo lsof | grep postfix
 rsyslogd    1075   1139 rs:main            syslog    6u     unix 0xffff9c57896a6000       0t0      28075 /var/spool/postfix/dev/log type=DGRAM (UNCONNECTED)
 master      3497                             root  cwd       DIR                8,2      4096    2658612 /var/spool/postfix
 master      3497                             root  txt       REG                8,2     47496    9192559 /usr/lib/postfix/sbin/master
@@ -94,10 +95,10 @@ qmgr        3510                          postfix  txt       REG                
 [. . .]
 ```
 - `lsof`: Displays "List of opened files" and filters it on the basis of Listening Program Name
-- Detailed output can be accessed from [here]()
+    - Complete output: [Click Here](https://github.com/YashAnand1/Application-File-Retrieval/blob/main/lsof-output.txt)
 
 ### Retrieving Files From SysCalls Using STRACE
-`strace -f <executed command from ps>` or `strace -o output.txt -fe openat <executed command from ps>`
+`strace -fe openat <executed command from ps>` or `strace -o output.txt -fe openat <executed command from ps>`
 ```
 $ strace -o output.txt -fe openat /usr/sbin/mysqld
 537291 openat(AT_FDCWD, "/usr/lib/mysql/private/glibc-hwcaps/x86-64-v3/libssl.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
@@ -113,6 +114,7 @@ $ strace -o output.txt -fe openat /usr/sbin/mysqld
 - Saving all OpenAt SysCalls into an output file
     - `strace -o output.txt`: Save the output of strace into a file
     - `-fe openat`: `f` for child-processes & `e` for retrieving only OpenAt SysCall as the expression
+    - Complete output: [Click Here](https://github.com/YashAnand1/Application-File-Retrieval/blob/main/strace-output.txt)
 
 ### Finding Package Names Using DPKG
 `sudo netstat -tulnp | awk '{print $7}' | grep / | cut -d/ -f1 | sort -u | while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print $11}' | sort -u; done | xargs -I {} dpkg -S {} | cut -f1 -d:`
@@ -188,6 +190,7 @@ $ dlocate --lsdir postfix
     - `dlocate <pkg>`: To "list records that match either package or files names" - Records matching package name are displayed
     - `dlocate --conf <pkg>`: To "list conffiles in package"
     - `dlocate --lsdir <pkg>`: To "list only the directories in package"
+    - Complete output: [Click Here](https://github.com/YashAnand1/Application-File-Retrieval/blob/main/dlocate-outputs.txt)
 
 ### Retrieving Remaining Logs From SysLog
 `grep <service from netstat> /var/log/syslog`
@@ -204,7 +207,8 @@ $ grep rpc.statd /var/log/syslog
 [. . .]
 ```
 - The remaining logs yet to be retrieved for the Listening Programs can be filtered out from `/var/log/syslog`
-- Some applications by default store their logs in here but it is also the "common file for logs" - Studied more on it from [here](https://www.logicmonitor.com/blog/what-is-syslog#:~:text=Syslog%2C%20an%20abbreviation%20for%20system,different%20parts%20of%20the%20system.)
+    - Some applications by default store their logs in here but it is also the "common file for logs" - Studied more on it from [here](https://www.logicmonitor.com/blog/what-is-syslog#:~:text=Syslog%2C%20an%20abbreviation%20for%20system,different%20parts%20of%20the%20system.)
+    - Complete output: [Click Here](https://github.com/YashAnand1/Application-File-Retrieval/blob/main/cat-syslog_output.txt)
 
 ## Retrieved Files
 
