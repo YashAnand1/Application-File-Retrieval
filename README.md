@@ -55,7 +55,7 @@ Out of the above 2 tools, `lsof` and `strace` proved to be the most powerful in 
 
 ## For retrieving the required files 
 
-### Finding Files From Process Details With PS
+### Finding Process Details With PS
 
 `ps -aux`: `sudo netstat -tulnp | awk '{print $7}' | grep / | cut -d/ -f1 | sort -u | while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print}'; done`
 ```
