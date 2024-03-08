@@ -76,7 +76,6 @@ systemd+     774  0.0  0.1  21020  8228 ?        Ss   Mar07   0:46 /lib/systemd/
 - `while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print}'; done'
     - `while read pid; do ps -aux`: Initiating looping for entering each PID into pid variable & prints all listing processes in system
     - `awk -v pid="$pid" '$2 == pid {print}'; done`: Output of `ps -aux` is filtered based on the second column of PID & entire output is printed - Loop closed with `; done`
-- Detailed output can be accessed from [here]()
 
 ### Listing Files With LSOF
 `sudo lsof | grep <listening program from netstat>` 
