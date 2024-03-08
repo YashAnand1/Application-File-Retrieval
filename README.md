@@ -42,7 +42,7 @@ Out of the above 2 tools, `lsof` and `strace` proved to be the most powerful in 
 774
 8380
 965
-```
+```                 
 
     - `sudo netstat -tlnp`
         - Helps with displaying the PIDs of Listening Programs  
@@ -52,7 +52,6 @@ Out of the above 2 tools, `lsof` and `strace` proved to be the most powerful in 
         - `awk '{print $7}': Prints the seventh column of 'PIDs/Program Name'
         - `grep / | cut -f1 -d/`: Filtering is done on the basis of `PID/Program` & First field for getting PID is printed before every "/"
         - `sort -u`: The output is uniquely sorted to remove duplicate outputs 
-
 
 ## For retrieving the required files 
 
