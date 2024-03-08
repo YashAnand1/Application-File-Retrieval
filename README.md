@@ -4,7 +4,7 @@
 </div>
 
 ## Index
-- [Introduction](#Introduction)]
+- [Introduction](#Introduction)
 - [Finding Listening Programs](#Finding-Listening-Programs)
 - [Finding Process Details With PS](#Finding-Process-Details-With-PS)
 - [Listing Files With LSOF](#Listing-Files-With-LSOF)
