@@ -29,6 +29,7 @@ Out of the above 2 tools, `lsof` and `strace` proved to be the most powerful in 
 
 ## Finding Listening Programs
 1. `Netstat`: `sudo netstat -tlnp | awk '{print $7}'| grep / | cut -f1 -d/ | sort -u` 
+
 ```
 1
 1286
