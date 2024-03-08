@@ -45,14 +45,14 @@ Out of the above 2 tools, `lsof` and `strace` proved to be the most powerful in 
 965
 ```                 
 
-    - `sudo netstat -tlnp`
-        - Helps with displaying the PIDs of Listening Programs  
-        - `-tlnp`: TCP+Listening+Numeric+Programs 
-    - `awk '{print $7}'| grep / | cut -f1 -d/` 
-        - Helps printing PIDs of Listening Programs 
-        - `awk '{print $7}': Prints the seventh column of 'PIDs/Program Name'
-        - `grep / | cut -f1 -d/`: Filtering is done on the basis of `PID/Program` & First field for getting PID is printed before every "/"
-        - `sort -u`: The output is uniquely sorted to remove duplicate outputs 
+- `sudo netstat -tlnp`
+    - Helps with displaying the PIDs of Listening Programs  
+    - `-tlnp`: TCP+Listening+Numeric+Programs 
+- `awk '{print $7}'| grep / | cut -f1 -d/` 
+    - Helps printing PIDs of Listening Programs 
+    - `awk '{print $7}': Prints the seventh column of 'PIDs/Program Name'
+    - `grep / | cut -f1 -d/`: Filtering is done on the basis of `PID/Program` & First field for getting PID is printed before every "/"
+    - `sort -u`: The output is uniquely sorted to remove duplicate outputs 
 
 ## For retrieving the required files 
 
