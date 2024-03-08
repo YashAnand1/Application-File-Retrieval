@@ -209,6 +209,8 @@ $ grep rpc.statd /var/log/syslog
 
 The Log, Binary, Configuration and Data paths that I was able to retrieve using these tools have been presented below for reference. 
 
+<div align = "center">
+
 | S. No | Listening Service | Package Name | Binary File/Directory | Configuration File/Directory | Log File/Directory | Data File/Directory |
 |-------|-------------------|--------------|-----------------------|------------------------------|--------------------|---------------------|
 | 1     | init              | systemd-sysv | /sbin/init            | N/A                          | /var/log/syslog    | N/A                 |
@@ -222,3 +224,4 @@ The Log, Binary, Configuration and Data paths that I was able to retrieve using 
 | 9     | master            | postfix      | /usr/lib/postfix/sbin/master | /etc/init.d/postfix<br>/etc/insserv.conf.d/postfix<br>/etc/network/if-down.d/postfix<br>/etc/network/if-up.d/postfix<br>/etc/postfix/post-install<br>/etc/postfix/postfix-files<br>/etc/postfix/postfix-script<br>/etc/ppp/ip-down.d/postfix<br>/etc/ppp/ip-up.d/postfix<br>/etc/resolvconf/update-libc.d/postfix<br>/etc/rsyslog.d/postfix.conf<br>/etc/ufw/applications.d/postfix | /var/log            | /var/lib/postfix    |
 | 10    | systemd-resolve   | systemd-resolved | /lib/systemd/systemd-resolved | /etc/systemd/resolved.conf | /var/log/syslog     | /lib/systemd<br>/lib/systemd/system<br>/usr/lib/sysusers.d<br>/usr/lib/tmpfiles.d |
 | 11    | prometheus-node   | prometheus-node-exporter | /usr/bin/prometheus-node-exporter | /etc/default/prometheus-node-exporter<br>/etc/init.d/prometheus-node-exporter<br>/etc/logrotate.d/prometheus-node-exporter | /var/log/prometheus | /var/lib/prometheus/node-exporter |
+</div>
