@@ -1,0 +1,325 @@
+$ dlocate postfix
+postfix: /.
+postfix: /etc
+postfix: /etc/init.d
+postfix: /etc/init.d/postfix
+postfix: /etc/insserv.conf.d
+postfix: /etc/insserv.conf.d/postfix
+postfix: /etc/network
+postfix: /etc/network/if-down.d
+postfix: /etc/network/if-down.d/postfix
+postfix: /etc/network/if-up.d
+postfix: /etc/network/if-up.d/postfix
+postfix: /etc/postfix
+postfix: /etc/postfix/dynamicmaps.cf.d
+postfix: /etc/postfix/post-install
+postfix: /etc/postfix/postfix-files
+postfix: /etc/postfix/postfix-files.d
+postfix: /etc/postfix/postfix-script
+postfix: /etc/postfix/sasl
+postfix: /etc/ppp
+postfix: /etc/ppp/ip-down.d
+postfix: /etc/ppp/ip-down.d/postfix
+postfix: /etc/ppp/ip-up.d
+postfix: /etc/ppp/ip-up.d/postfix
+postfix: /etc/resolvconf
+postfix: /etc/resolvconf/update-libc.d
+postfix: /etc/resolvconf/update-libc.d/postfix
+postfix: /etc/rsyslog.d
+postfix: /etc/rsyslog.d/postfix.conf
+postfix: /etc/ufw
+postfix: /etc/ufw/applications.d
+postfix: /etc/ufw/applications.d/postfix
+postfix: /lib
+postfix: /lib/systemd
+postfix: /lib/systemd/system
+postfix: /lib/systemd/system/postfix-resolvconf.path
+postfix: /lib/systemd/system/postfix-resolvconf.service
+postfix: /lib/systemd/system/postfix.service
+postfix: /lib/systemd/system/postfix@.service
+postfix: /lib/systemd/system-generators
+postfix: /lib/systemd/system-generators/postfix-instance-generator
+postfix: /usr
+postfix: /usr/bin
+postfix: /usr/lib
+postfix: /usr/lib/networkd-dispatcher
+postfix: /usr/lib/networkd-dispatcher/off.d
+postfix: /usr/lib/networkd-dispatcher/off.d/postfix
+postfix: /usr/lib/networkd-dispatcher/routable.d
+postfix: /usr/lib/networkd-dispatcher/routable.d/postfix
+postfix: /usr/lib/postfix
+postfix: /usr/lib/postfix/configure-instance.sh
+postfix: /usr/lib/postfix/libmilter.a
+postfix: /usr/lib/postfix/libpostfix-dns.so
+postfix: /usr/lib/postfix/libpostfix-global.so
+postfix: /usr/lib/postfix/libpostfix-master.so
+postfix: /usr/lib/postfix/libpostfix-tls.so
+postfix: /usr/lib/postfix/libpostfix-util.so
+postfix: /usr/lib/postfix/libxsasl.a
+postfix: /usr/lib/postfix/postfix_groups.pl
+postfix: /usr/lib/postfix/sbin
+postfix: /usr/lib/postfix/sbin/anvil
+postfix: /usr/lib/postfix/sbin/bounce
+postfix: /usr/lib/postfix/sbin/cleanup
+postfix: /usr/lib/postfix/sbin/discard
+postfix: /usr/lib/postfix/sbin/dnsblog
+postfix: /usr/lib/postfix/sbin/error
+postfix: /usr/lib/postfix/sbin/flush
+postfix: /usr/lib/postfix/sbin/fsstone
+postfix: /usr/lib/postfix/sbin/lmtp
+postfix: /usr/lib/postfix/sbin/local
+postfix: /usr/lib/postfix/sbin/master
+postfix: /usr/lib/postfix/sbin/nqmgr
+postfix: /usr/lib/postfix/sbin/oqmgr
+postfix: /usr/lib/postfix/sbin/pickup
+postfix: /usr/lib/postfix/sbin/pipe
+postfix: /usr/lib/postfix/sbin/post-install
+postfix: /usr/lib/postfix/sbin/postfix-script
+postfix: /usr/lib/postfix/sbin/postfix-tls-script
+postfix: /usr/lib/postfix/sbin/postfix-wrapper
+postfix: /usr/lib/postfix/sbin/postlogd
+postfix: /usr/lib/postfix/sbin/postmulti-script
+postfix: /usr/lib/postfix/sbin/postscreen
+postfix: /usr/lib/postfix/sbin/proxymap
+postfix: /usr/lib/postfix/sbin/qmgr
+postfix: /usr/lib/postfix/sbin/qmqpd
+postfix: /usr/lib/postfix/sbin/scache
+postfix: /usr/lib/postfix/sbin/showq
+postfix: /usr/lib/postfix/sbin/smtp
+postfix: /usr/lib/postfix/sbin/smtpd
+postfix: /usr/lib/postfix/sbin/spawn
+postfix: /usr/lib/postfix/sbin/tlsmgr
+postfix: /usr/lib/postfix/sbin/tlsproxy
+postfix: /usr/lib/postfix/sbin/trivial-rewrite
+postfix: /usr/lib/postfix/sbin/verify
+postfix: /usr/lib/postfix/sbin/virtual
+postfix: /usr/sbin
+postfix: /usr/sbin/postalias
+postfix: /usr/sbin/postcat
+postfix: /usr/sbin/postconf
+postfix: /usr/sbin/postdrop
+postfix: /usr/sbin/postfix
+postfix: /usr/sbin/postfix-add-filter
+postfix: /usr/sbin/postfix-add-policy
+postfix: /usr/sbin/postfix-collate
+postfix: /usr/sbin/postkick
+postfix: /usr/sbin/postlock
+postfix: /usr/sbin/postlog
+postfix: /usr/sbin/postmap
+postfix: /usr/sbin/postmulti
+postfix: /usr/sbin/postqueue
+postfix: /usr/sbin/postsuper
+postfix: /usr/sbin/posttls-finger
+postfix: /usr/sbin/qmqp-sink
+postfix: /usr/sbin/qmqp-source
+postfix: /usr/sbin/qshape
+postfix: /usr/sbin/rmail
+postfix: /usr/sbin/sendmail
+postfix: /usr/sbin/smtp-sink
+postfix: /usr/sbin/smtp-source
+postfix: /usr/share
+postfix: /usr/share/apport
+postfix: /usr/share/apport/package-hooks
+postfix: /usr/share/apport/package-hooks/postfix.py
+postfix: /usr/share/doc
+postfix: /usr/share/doc/postfix
+postfix: /usr/share/doc/postfix/README.Debian.gz
+postfix: /usr/share/doc/postfix/changelog.Debian.gz
+postfix: /usr/share/doc/postfix/copyright
+postfix: /usr/share/lintian
+postfix: /usr/share/lintian/overrides
+postfix: /usr/share/lintian/overrides/postfix
+postfix: /usr/share/man
+postfix: /usr/share/man/man1
+postfix: /usr/share/man/man1/makedefs.1.gz
+postfix: /usr/share/man/man1/postalias.1.gz
+postfix: /usr/share/man/man1/postcat.1.gz
+postfix: /usr/share/man/man1/postconf.1.gz
+postfix: /usr/share/man/man1/postdrop.1.gz
+postfix: /usr/share/man/man1/postfix-collate.1.gz
+postfix: /usr/share/man/man1/postfix-tls.1.gz
+postfix: /usr/share/man/man1/postfix.1.gz
+postfix: /usr/share/man/man1/postkick.1.gz
+postfix: /usr/share/man/man1/postlock.1.gz
+postfix: /usr/share/man/man1/postlog.1.gz
+postfix: /usr/share/man/man1/postmap.1.gz
+postfix: /usr/share/man/man1/postmulti.1.gz
+postfix: /usr/share/man/man1/postqueue.1.gz
+postfix: /usr/share/man/man1/postsuper.1.gz
+postfix: /usr/share/man/man1/posttls-finger.1.gz
+postfix: /usr/share/man/man1/qmqp-sink.1.gz
+postfix: /usr/share/man/man1/qmqp-source.1.gz
+postfix: /usr/share/man/man1/qshape.1.gz
+postfix: /usr/share/man/man1/sendmail.1.gz
+postfix: /usr/share/man/man1/smtp-sink.1.gz
+postfix: /usr/share/man/man1/smtp-source.1.gz
+postfix: /usr/share/man/man5
+postfix: /usr/share/man/man5/access.5.gz
+postfix: /usr/share/man/man5/aliases.5.gz
+postfix: /usr/share/man/man5/bounce.5.gz
+postfix: /usr/share/man/man5/canonical.5.gz
+postfix: /usr/share/man/man5/cidr_table.5.gz
+postfix: /usr/share/man/man5/generic.5.gz
+postfix: /usr/share/man/man5/header_checks.5.gz
+postfix: /usr/share/man/man5/master.5.gz
+postfix: /usr/share/man/man5/memcache_table.5.gz
+postfix: /usr/share/man/man5/nisplus_table.5.gz
+postfix: /usr/share/man/man5/postconf.5.gz
+postfix: /usr/share/man/man5/postfix-wrapper.5.gz
+postfix: /usr/share/man/man5/regexp_table.5.gz
+postfix: /usr/share/man/man5/relocated.5.gz
+postfix: /usr/share/man/man5/socketmap_table.5.gz
+postfix: /usr/share/man/man5/tcp_table.5.gz
+postfix: /usr/share/man/man5/transport.5.gz
+postfix: /usr/share/man/man5/virtual.5.gz
+postfix: /usr/share/man/man8
+postfix: /usr/share/man/man8/anvil.8postfix.gz
+postfix: /usr/share/man/man8/bounce.8postfix.gz
+postfix: /usr/share/man/man8/cleanup.8postfix.gz
+postfix: /usr/share/man/man8/discard.8postfix.gz
+postfix: /usr/share/man/man8/dnsblog.8postfix.gz
+postfix: /usr/share/man/man8/error.8postfix.gz
+postfix: /usr/share/man/man8/flush.8postfix.gz
+postfix: /usr/share/man/man8/local.8postfix.gz
+postfix: /usr/share/man/man8/master.8postfix.gz
+postfix: /usr/share/man/man8/oqmgr.8postfix.gz
+postfix: /usr/share/man/man8/pickup.8postfix.gz
+postfix: /usr/share/man/man8/pipe.8postfix.gz
+postfix: /usr/share/man/man8/postfix-add-filter.8.gz
+postfix: /usr/share/man/man8/postfix-add-policy.8.gz
+postfix: /usr/share/man/man8/postlogd.8postfix.gz
+postfix: /usr/share/man/man8/postscreen.8postfix.gz
+postfix: /usr/share/man/man8/proxymap.8postfix.gz
+postfix: /usr/share/man/man8/qmgr.8postfix.gz
+postfix: /usr/share/man/man8/qmqpd.8postfix.gz
+postfix: /usr/share/man/man8/rmail.8.gz
+postfix: /usr/share/man/man8/scache.8postfix.gz
+postfix: /usr/share/man/man8/showq.8postfix.gz
+postfix: /usr/share/man/man8/smtp.8postfix.gz
+postfix: /usr/share/man/man8/smtpd.8postfix.gz
+postfix: /usr/share/man/man8/spawn.8postfix.gz
+postfix: /usr/share/man/man8/tlsmgr.8postfix.gz
+postfix: /usr/share/man/man8/tlsproxy.8postfix.gz
+postfix: /usr/share/man/man8/trivial-rewrite.8postfix.gz
+postfix: /usr/share/man/man8/verify.8postfix.gz
+postfix: /usr/share/man/man8/virtual.8postfix.gz
+postfix: /usr/share/postfix
+postfix: /usr/share/postfix/dynamicmaps.cf
+postfix: /usr/share/postfix/main.cf.debian
+postfix: /usr/share/postfix/main.cf.dist
+postfix: /usr/share/postfix/main.cf.tls
+postfix: /usr/share/postfix/makedefs.out
+postfix: /usr/share/postfix/master.cf.dist
+postfix: /usr/share/postfix/postinst.functions
+postfix: /var
+postfix: /var/lib
+postfix: /var/lib/postfix
+postfix: /var/log
+postfix: /var/spool
+postfix: /var/spool/postfix
+postfix: /var/spool/postfix/dev
+postfix: /var/spool/postfix/etc
+postfix: /var/spool/postfix/lib
+postfix: /var/spool/postfix/usr
+postfix: /var/spool/postfix/usr/lib
+postfix: /var/spool/postfix/usr/lib/sasl2
+postfix: /var/spool/postfix/usr/lib/zoneinfo
+postfix: /usr/bin/mailq
+postfix: /usr/bin/newaliases
+postfix: /usr/bin/rmail
+postfix: /usr/lib/sendmail
+postfix: /usr/share/man/man1/mailq.1.gz
+postfix: /usr/share/man/man1/newaliases.1.gz
+postfix: /usr/share/man/man5/body_checks.5.gz
+postfix: /usr/share/man/man8/defer.8postfix.gz
+postfix: /usr/share/man/man8/lmtp.8postfix.gz
+postfix: /usr/share/man/man8/trace.8postfix.gz
+apparmor: /etc/apparmor.d/abstractions/postfix-common
+augeas-lenses: /usr/share/augeas/lenses/dist/postfix_access.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/postfix_main.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/postfix_master.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/postfix_passwordmap.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/postfix_sasl_smtpd.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/postfix_transport.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/postfix_virtual.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/tests/test_postfix_access.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/tests/test_postfix_main.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/tests/test_postfix_master.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/tests/test_postfix_passwordmap.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/tests/test_postfix_sasl_smtpd.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/tests/test_postfix_transport.aug
+augeas-lenses: /usr/share/augeas/lenses/dist/tests/test_postfix_virtual.aug
+bash-completion: /usr/share/bash-completion/completions/postfix
+libboost1.74-dev:amd64: /usr/include/boost/type_traits/detail/has_postfix_operator.hpp
+
+$ dlocate --conf postfix
+/etc/init.d/postfix
+/etc/insserv.conf.d/postfix
+/etc/network/if-down.d/postfix
+/etc/network/if-up.d/postfix
+/etc/postfix/post-install
+/etc/postfix/postfix-files
+/etc/postfix/postfix-script
+/etc/ppp/ip-down.d/postfix
+/etc/ppp/ip-up.d/postfix
+/etc/resolvconf/update-libc.d/postfix
+/etc/rsyslog.d/postfix.conf
+/etc/ufw/applications.d/postfix
+
+$ dlocate --lsdir postfix
+/.
+/etc
+/etc/init.d
+/etc/insserv.conf.d
+/etc/network
+/etc/network/if-down.d
+/etc/network/if-up.d
+/etc/postfix
+/etc/postfix/dynamicmaps.cf.d
+/etc/postfix/postfix-files.d
+/etc/postfix/sasl
+/etc/ppp
+/etc/ppp/ip-down.d
+/etc/ppp/ip-up.d
+/etc/resolvconf
+/etc/resolvconf/update-libc.d
+/etc/rsyslog.d
+/etc/ufw
+/etc/ufw/applications.d
+/lib/systemd
+/lib/systemd/system
+/lib/systemd/system-generators
+/usr
+/usr/bin
+/usr/lib
+/usr/lib/networkd-dispatcher
+/usr/lib/networkd-dispatcher/off.d
+/usr/lib/networkd-dispatcher/routable.d
+/usr/lib/postfix
+/usr/lib/postfix/sbin
+/usr/sbin
+/usr/share
+/usr/share/apport
+/usr/share/apport/package-hooks
+/usr/share/doc
+/usr/share/doc/postfix
+/usr/share/lintian
+/usr/share/lintian/overrides
+/usr/share/man
+/usr/share/man/man1
+/usr/share/man/man5
+/usr/share/man/man8
+/usr/share/postfix
+/var
+/var/lib
+/var/lib/postfix
+/var/log
+/var/spool
+/var/spool/postfix
+/var/spool/postfix/dev
+/var/spool/postfix/etc
+/var/spool/postfix/lib
+/var/spool/postfix/usr
+/var/spool/postfix/usr/lib
+/var/spool/postfix/usr/lib/sasl2
+/var/spool/postfix/usr/lib/zoneinfo
