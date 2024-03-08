@@ -12,7 +12,7 @@
 - [Finding Package Names Using DPKG](#Finding-Package-Names-Using-DPKG)
 - [Locating Most Files Using DLOCATE](#Locating-Most-Files-Using-DLOCATE)
 - [Retrieving Remaining Logs From SysLog](#Retrieving-Remaining-Logs-From-SysLog)
-- [Resources](#Resources)
+- [Retrieved Files](#Retrieved-Files)
 
 ## Introduction
 As per the assigned task, I was required to find the Binary, Log, Configuration and Data directory paths of the Listening Programs from my system. Since [I have been able to retrieve the required files](https://docs.google.com/spreadsheets/d/1JQPDfufZKjkzZ16GkwGl2jKMo-j2qa4alAY_r9u-H6Y/edit#gid=0), this document has been created for the reference of others and mine for how I was able to retrieve these files. 
@@ -203,3 +203,19 @@ $ grep rpc.statd /var/log/syslog
 ```
     - The remaining logs yet to be retrieved for the Listening Programs can be filtered out from `/var/log/syslog`
     - Some applications by default store their logs in here but it is also the "common file for logs" - Studied more on it from [here](https://www.logicmonitor.com/blog/what-is-syslog#:~:text=Syslog%2C%20an%20abbreviation%20for%20system,different%20parts%20of%20the%20system.)
+
+## Retrieved Files
+
+| S. No | Listening Service | Package Name | Binary File/Directory | Configuration File/Directory | Log File/Directory | Data File/Directory |
+|-------|-------------------|--------------|-----------------------|------------------------------|--------------------|---------------------|
+| 1     | init              | systemd-sysv | /sbin/init            | N/A                          | /var/log/syslog    | N/A                 |
+| 2     | cupsd             | cups-daemon  | /usr/sbin/cupsd       | "/etc/apparmor.d/usr.sbin.cupsd<br>/etc/cups/cups-files.conf<br>/etc/init.d/cups<br>/etc/logrotate.d/cups-daemon<br>/etc/pam.d/cups<br>/etc/ufw/applications.d/cups" | /var/log/cups       | /usr/share/cups     |
+| 3     | postgres          | postgresql-16| /usr/lib/postgresql/16/bin/postgres | etc/postgresql/16/main/postgresql.conf | /var/log/postgresql/postgresql-16-main.log | /var/lib/postgresql/16/main |
+| 4     | dnsmasq           | dnsmasq-base | /usr/sbin/dnsmasq     | /etc/dbus-1/system.d/dnsmasq.conf | /var/log/syslog     | /var/lib/misc       |
+| 5     | merecat           | merecat      | /usr/sbin/merecat     | /etc/merecat.conf            | /var/log/syslog     | /var/www            |
+| 6     | rpc.statd         | nfs-common   | /sbin/rpc.statd       | "/etc/default/nfs-common<br>/etc/init.d/nfs-common<br>/etc/request-key.d/id_resolver.conf" | /var/log/syslog     | /var/lib/nfs        |
+| 7     | rpc.mountd        | nfs-kernel-server | /usr/sbin/rpc.mountd | /etc/init.d/nfs-kernel-server | /var/log/syslog     | /var/lib/nfs        |
+| 8     | mysqld            | mysql-community-server-core | /usr/sbin/mysqld | /etc/mysql/conf.d/          | /var/log/mysql/error.log | /usr/lib/mysql      |
+| 9     | master            | postfix      | /usr/lib/postfix/sbin/master | "/etc/init.d/postfix<br>/etc/insserv.conf.d/postfix<br>/etc/network/if-down.d/postfix<br>/etc/network/if-up.d/postfix<br>/etc/postfix/post-install<br>/etc/postfix/postfix-files<br>/etc/postfix/postfix-script<br>/etc/ppp/ip-down.d/postfix<br>/etc/ppp/ip-up.d/postfix<br>/etc/resolvconf/update-libc.d/postfix<br>/etc/rsyslog.d/postfix.conf<br>/etc/ufw/applications.d/postfix" | /var/log            | /var/lib/postfix    |
+| 10    | systemd-resolve   | systemd-resolved | /lib/systemd/systemd-resolved | /etc/systemd/resolved.conf | /var/log/syslog     | "/lib/systemd<br>/lib/systemd/system<br>/usr/lib/sysusers.d<br>/usr/lib/tmpfiles.d" |
+| 11    | prometheus-node   | prometheus-node-exporter | /usr/bin/prometheus-node-exporter | "/etc/default/prometheus-node-exporter<br>/etc/init.d/prometheus-node-exporter<br>/etc/logrotate.d/prometheus-node-exporter" | /var/log/prometheus | /var/lib/prometheus/node-exporter |
