@@ -99,6 +99,7 @@ qmgr        3510                          postfix  txt       REG                
 ### Retrieving Files From SysCalls Using STRACE
 `strace -f <executed command from ps>` or `strace -o output.txt -fe openat <executed command from ps>`
 ```
+$ strace -o output.txt -fe openat /usr/sbin/mysqld
 537291 openat(AT_FDCWD, "/usr/lib/mysql/private/glibc-hwcaps/x86-64-v3/libssl.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
 537291 openat(AT_FDCWD, "/usr/lib/mysql/private/glibc-hwcaps/x86-64-v2/libssl.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
 537291 openat(AT_FDCWD, "/usr/lib/mysql/private/libssl.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
@@ -209,8 +210,6 @@ $ grep rpc.statd /var/log/syslog
 
 The Log, Binary, Configuration and Data paths that I was able to retrieve using these tools have been presented below for reference. 
 
-<div align = "center">
-
 | S. No | Listening Service | Package Name | Binary File/Directory | Configuration File/Directory | Log File/Directory | Data File/Directory |
 |-------|-------------------|--------------|-----------------------|------------------------------|--------------------|---------------------|
 | 1     | init              | systemd-sysv | /sbin/init            | N/A                          | /var/log/syslog    | N/A                 |
@@ -224,4 +223,3 @@ The Log, Binary, Configuration and Data paths that I was able to retrieve using 
 | 9     | master            | postfix      | /usr/lib/postfix/sbin/master | /etc/init.d/postfix<br>/etc/insserv.conf.d/postfix<br>/etc/network/if-down.d/postfix<br>/etc/network/if-up.d/postfix<br>/etc/postfix/post-install<br>/etc/postfix/postfix-files<br>/etc/postfix/postfix-script<br>/etc/ppp/ip-down.d/postfix<br>/etc/ppp/ip-up.d/postfix<br>/etc/resolvconf/update-libc.d/postfix<br>/etc/rsyslog.d/postfix.conf<br>/etc/ufw/applications.d/postfix | /var/log            | /var/lib/postfix    |
 | 10    | systemd-resolve   | systemd-resolved | /lib/systemd/systemd-resolved | /etc/systemd/resolved.conf | /var/log/syslog     | /lib/systemd<br>/lib/systemd/system<br>/usr/lib/sysusers.d<br>/usr/lib/tmpfiles.d |
 | 11    | prometheus-node   | prometheus-node-exporter | /usr/bin/prometheus-node-exporter | /etc/default/prometheus-node-exporter<br>/etc/init.d/prometheus-node-exporter<br>/etc/logrotate.d/prometheus-node-exporter | /var/log/prometheus | /var/lib/prometheus/node-exporter |
-</div>
