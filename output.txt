@@ -1,0 +1,84 @@
+rsyslogd    1075                           syslog    6u     unix 0xffff9c57896a6000       0t0      28075 /var/spool/postfix/dev/log type=DGRAM (UNCONNECTED)
+rsyslogd    1075   1133 in:imuxso          syslog    6u     unix 0xffff9c57896a6000       0t0      28075 /var/spool/postfix/dev/log type=DGRAM (UNCONNECTED)
+rsyslogd    1075   1134 in:imklog          syslog    6u     unix 0xffff9c57896a6000       0t0      28075 /var/spool/postfix/dev/log type=DGRAM (UNCONNECTED)
+rsyslogd    1075   1139 rs:main            syslog    6u     unix 0xffff9c57896a6000       0t0      28075 /var/spool/postfix/dev/log type=DGRAM (UNCONNECTED)
+master      3497                             root  cwd       DIR                8,2      4096    2658612 /var/spool/postfix
+master      3497                             root  txt       REG                8,2     47496    9192559 /usr/lib/postfix/sbin/master
+master      3497                             root  mem       REG                8,2    303320    9192545 /usr/lib/postfix/libpostfix-util.so
+master      3497                             root  mem       REG                8,2    318952    9192542 /usr/lib/postfix/libpostfix-global.so
+master      3497                             root   10uW     REG                8,2        33    2658969 /var/spool/postfix/pid/master.pid
+master      3497                             root   11uW     REG                8,2        33    2658970 /var/lib/postfix/master.lock
+qmgr        3510                          postfix  cwd       DIR                8,2      4096    2658612 /var/spool/postfix
+qmgr        3510                          postfix  rtd       DIR                8,2      4096          2 /
+qmgr        3510                          postfix  txt       REG                8,2     67968    9192560 /usr/lib/postfix/sbin/qmgr
+qmgr        3510                          postfix  mem       REG                8,2    330152    7996492 /usr/lib/x86_64-linux-gnu/libnss_systemd.so.2
+qmgr        3510                          postfix  mem       REG                8,2    823456    7998533 /usr/lib/x86_64-linux-gnu/libkrb5.so.3.3
+qmgr        3510                          postfix  mem       REG                8,2   2522552    7996080 /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.32
+qmgr        3510                          postfix  mem       REG                8,2     48032    7995504 /usr/lib/x86_64-linux-gnu/libnss_sss.so.2
+qmgr        3510                          postfix  mem       REG                8,2     47440    7997624 /usr/lib/x86_64-linux-gnu/libcap.so.2.66
+qmgr        3510                          postfix  mem       REG                8,2     64496    7995527 /usr/lib/x86_64-linux-gnu/libresolv.so.2
+qmgr        3510                          postfix  mem       REG                8,2    338664    7998157 /usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.2.2
+qmgr        3510                          postfix  mem       REG                8,2    948816    7995466 /usr/lib/x86_64-linux-gnu/libm.so.6
+qmgr        3510                          postfix  mem       REG                8,2  31262336    8000127 /usr/lib/x86_64-linux-gnu/libicudata.so.72.1
+qmgr        3510                          postfix  mem       REG                8,2     22600    7998859 /usr/lib/x86_64-linux-gnu/libkeyutils.so.1.10
+qmgr        3510                          postfix  mem       REG                8,2     51984    7996511 /usr/lib/x86_64-linux-gnu/libkrb5support.so.0.1
+qmgr        3510                          postfix  mem       REG                8,2     18504    7998857 /usr/lib/x86_64-linux-gnu/libcom_err.so.2.1
+qmgr        3510                          postfix  mem       REG                8,2    178632    7997574 /usr/lib/x86_64-linux-gnu/libk5crypto.so.3.1
+qmgr        3510                          postfix  mem       REG                8,2    178816    7997838 /usr/lib/x86_64-linux-gnu/libtirpc.so.3.0.0
+qmgr        3510                          postfix  mem       REG                8,2   2083144    8000178 /usr/lib/x86_64-linux-gnu/libicuuc.so.72.1
+qmgr        3510                          postfix  mem       REG                8,2   1789520    7998727 /usr/lib/x86_64-linux-gnu/libdb-5.3.so
+qmgr        3510                          postfix  mem       REG                8,2   2072888    7995438 /usr/lib/x86_64-linux-gnu/libc.so.6
+qmgr        3510                          postfix  mem       REG                8,2    141872    7995677 /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+qmgr        3510                          postfix  mem       REG                8,2     93280    7997842 /usr/lib/x86_64-linux-gnu/libnsl.so.2.0.1
+qmgr        3510                          postfix  mem       REG                8,2    303320    9192545 /usr/lib/postfix/libpostfix-util.so
+qmgr        3510                          postfix  mem       REG                8,2    318952    9192542 /usr/lib/postfix/libpostfix-global.so
+qmgr        3510                          postfix  mem       REG                8,2     47272    9192543 /usr/lib/postfix/libpostfix-master.so
+qmgr        3510                          postfix  mem       REG                8,2    224376    7995408 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+qmgr        3510                          postfix    0u      CHR                1,3       0t0          5 /dev/null
+qmgr        3510                          postfix    1u      CHR                1,3       0t0          5 /dev/null
+qmgr        3510                          postfix    2u      CHR                1,3       0t0          5 /dev/null
+qmgr        3510                          postfix    3r     FIFO               0,13       0t0      42357 pipe
+qmgr        3510                          postfix    4w     FIFO               0,13       0t0      42357 pipe
+qmgr        3510                          postfix    5u     unix 0xffff9c57ff26e800       0t0      42255 type=STREAM (CONNECTED)
+qmgr        3510                          postfix    6u     unix 0xffff9c57ff26d400       0t0      42253 public/qmgr type=STREAM (LISTEN)
+qmgr        3510                          postfix    7u     unix 0xffff9c57ff265400       0t0      40417 type=DGRAM (CONNECTED)
+qmgr        3510                          postfix    8u  a_inode               0,14         0       2063 [eventpoll:5,6,11]
+qmgr        3510                          postfix   11r     FIFO               0,13       0t0      41413 pipe
+qmgr        3510                          postfix   12w     FIFO               0,13       0t0      41413 pipe
+pickup    545122                          postfix  cwd       DIR                8,2      4096    2658612 /var/spool/postfix
+pickup    545122                          postfix  rtd       DIR                8,2      4096    2658612 /var/spool/postfix
+pickup    545122                          postfix  txt       REG                8,2     22912    9192562 /usr/lib/postfix/sbin/pickup
+pickup    545122                          postfix  mem       REG                8,2   2522552    7996080 /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.32
+pickup    545122                          postfix  mem       REG                8,2     48032    7995504 /usr/lib/x86_64-linux-gnu/libnss_sss.so.2
+pickup    545122                          postfix  mem       REG                8,2     47440    7997624 /usr/lib/x86_64-linux-gnu/libcap.so.2.66
+pickup    545122                          postfix  mem       REG                8,2    330152    7996492 /usr/lib/x86_64-linux-gnu/libnss_systemd.so.2
+pickup    545122                          postfix  mem       REG                8,2     64496    7995527 /usr/lib/x86_64-linux-gnu/libresolv.so.2
+pickup    545122                          postfix  mem       REG                8,2     22600    7998859 /usr/lib/x86_64-linux-gnu/libkeyutils.so.1.10
+pickup    545122                          postfix  mem       REG                8,2    178632    7997574 /usr/lib/x86_64-linux-gnu/libk5crypto.so.3.1
+pickup    545122                          postfix  mem       REG                8,2    823456    7998533 /usr/lib/x86_64-linux-gnu/libkrb5.so.3.3
+pickup    545122                          postfix  mem       REG                8,2  31262336    8000127 /usr/lib/x86_64-linux-gnu/libicudata.so.72.1
+pickup    545122                          postfix  mem       REG                8,2    338664    7998157 /usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.2.2
+pickup    545122                          postfix  mem       REG                8,2    141872    7995677 /usr/lib/x86_64-linux-gnu/libgcc_s.so.1
+pickup    545122                          postfix  mem       REG                8,2   2083144    8000178 /usr/lib/x86_64-linux-gnu/libicuuc.so.72.1
+pickup    545122                          postfix  mem       REG                8,2   1789520    7998727 /usr/lib/x86_64-linux-gnu/libdb-5.3.so
+pickup    545122                          postfix  mem       REG                8,2   2072888    7995438 /usr/lib/x86_64-linux-gnu/libc.so.6
+pickup    545122                          postfix  mem       REG                8,2     51984    7996511 /usr/lib/x86_64-linux-gnu/libkrb5support.so.0.1
+pickup    545122                          postfix  mem       REG                8,2     18504    7998857 /usr/lib/x86_64-linux-gnu/libcom_err.so.2.1
+pickup    545122                          postfix  mem       REG                8,2    948816    7995466 /usr/lib/x86_64-linux-gnu/libm.so.6
+pickup    545122                          postfix  mem       REG                8,2    178816    7997838 /usr/lib/x86_64-linux-gnu/libtirpc.so.3.0.0
+pickup    545122                          postfix  mem       REG                8,2     93280    7997842 /usr/lib/x86_64-linux-gnu/libnsl.so.2.0.1
+pickup    545122                          postfix  mem       REG                8,2    303320    9192545 /usr/lib/postfix/libpostfix-util.so
+pickup    545122                          postfix  mem       REG                8,2    318952    9192542 /usr/lib/postfix/libpostfix-global.so
+pickup    545122                          postfix  mem       REG                8,2     47272    9192543 /usr/lib/postfix/libpostfix-master.so
+pickup    545122                          postfix  mem       REG                8,2    224376    7995408 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+pickup    545122                          postfix    0u      CHR                1,3       0t0          5 /dev/null
+pickup    545122                          postfix    1u      CHR                1,3       0t0          5 /dev/null
+pickup    545122                          postfix    2u      CHR                1,3       0t0          5 /dev/null
+pickup    545122                          postfix    3r     FIFO               0,13       0t0      42357 pipe
+pickup    545122                          postfix    4w     FIFO               0,13       0t0      42357 pipe
+pickup    545122                          postfix    5u     unix 0xffff9c57ff269000       0t0      42248 type=STREAM (CONNECTED)
+pickup    545122                          postfix    6u     unix 0xffff9c57ff268000       0t0      42246 public/pickup type=STREAM (LISTEN)
+pickup    545122                          postfix    7u     unix 0xffff9c568ca5c000       0t0    3567328 type=DGRAM (CONNECTED)
+pickup    545122                          postfix    8u  a_inode               0,14         0       2063 [eventpoll:5,6,9]
+pickup    545122                          postfix    9r     FIFO               0,13       0t0    3567342 pipe
+pickup    545122                          postfix   10w     FIFO               0,13       0t0    3567342 pipe
