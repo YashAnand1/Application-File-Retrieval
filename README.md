@@ -4,118 +4,202 @@
 </div>
 
 ## Index
-- [Tools Utilised](#Tools-Utilised)
-- [Listing Executed Commands From Listening Programs](#Listing-Executed-Commands-From-Listening-Programs)
-- [Finding Package Names From Binaries](#Finding-Package-Names-From-Binaries)
-- [Finding Data And Conf Directories Using Dlocate](#Finding-Data-And-Conf-Directories-Using-Dlocate)
-- [Finding Remaining Logs From Lsof And Syslog](#Finding-Remaining-Logs-From-Lsof-And-Syslog)
-- [Finding Remaining Configurations From Strace](#Finding-Remaining-Configurations-From-Strace)
+- [Introduction](#Introduction)]
+- [Finding Listening Programs](#Finding-Listening-Programs)
+- [Finding Process Details With PS](#Finding-Process-Details-With-PS)
+- [Listing Files With LSOF](#Listing-Files-With-LSOF)
+- [Retrieving Files From SysCalls Using STRACE](#Retrieving-Files-From-SysCalls-Using-STRACE)
+- [Finding Package Names Using DPKG](#Finding-Package-Names-Using-DPKG)
+- [Locating Most Files Using DLOCATE](#Locating-Most-Files-Using-DLOCATE)
+- [Retrieving Remaining Logs From SysLog](#Retrieving-Remaining-Logs-From-SysLog)
+- [Resources](#Resources)
 
-## Tools Utilised
-- For finding details of Listening Programs
-    - `Netstat`
-        -`sudo netstat -tulnp | awk '{print $7}'| grep / | cut -f1 -d/ | sort -u`
-    - `ps -aux`
-        - `sudo netstat -tulnp | awk '{print $7}' | grep / | cut -d/ -f1 | sort -u | while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print $11}' | sort -u; done | sort -u`
+## Introduction
+As per the assigned task, I was required to find the Binary, Log, Configuration and Data directory paths of the Listening Programs from my system. Since [I have been able to retrieve the required files](https://docs.google.com/spreadsheets/d/1JQPDfufZKjkzZ16GkwGl2jKMo-j2qa4alAY_r9u-H6Y/edit#gid=0), this document has been created for the reference of others and mine for how I was able to retrieve these files. 
 
-- For retrieving the required files 
-    - `lsof | grep <listening program from netstat>` 
-    - `strace -f <executed command from ps>` (f for child-procs)
-    - `dlocate <pkg>, dlocate --conf <pkg>, dlocate --lsdir <pkg>`
-    - `grep <service from netstat> /var/log/syslog`
+The tools utilised for retrieving such files were as follows:
+- [Strace](https://opensource.com/article/19/10/strace#:~:text=A%20system%20call%20is%20a,understand%20how%20system%20calls%20work.)
+- [Dlocate](https://github.com/craig-sanders/dlocate)
+- [Lsof](https://www.geeksforgeeks.org/lsof-command-in-linux-with-examples/)
+- [Netstat](https://www.lifewire.com/netstat-command-2618098)
+- [Ps](https://www.digitalocean.com/community/tutorials/linux-ps-command)
+- [Dpkg](https://phoenixnap.com/kb/dpkg-command)
 
-## Listing Executed Commands From Listening Programs
-- Retrieve Listening Programs & Process Details using **Netstat & Ps**:
-    - Under the 'COMMAND' column, look for the executed commands
-    - If they contain binary, config, log and data directory paths, save them
+Out of the above 2 tools, `lsof` and `strace` proved to be the most powerful in my experience. In the next sections, I have documented how these tool were utilised for being able to retrieve the required files as per my requirements. 
+
+## Finding Listening Programs
+1. `Netstat`: `sudo netstat -tlnp | awk '{print $7}'| grep / | cut -f1 -d/ | sort -u` 
 ```
-sudo netstat -tulnp | awk '{print $7}' | grep / | cut -d/ -f1 | sort -u | while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print}' | sort -u; done
-
-Output:
-root           1  0.1  0.1 169772 14120 ?        Ss   15:34   0:06 /sbin/init splash
-root        1286  0.0  0.1  37900 12376 ?        Ss   15:34   0:00 /usr/sbin/cupsd -l
-postgres    1539  0.0  0.3 224164 30648 ?        Ss   15:34   0:00 /usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/16/main -c config_file=/etc/postgresql/16/main/postgresql.conf
-libvirt+    1814  0.0  0.0  11256   516 ?        S    15:34   0:00 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/default.conf --leasefile-ro --dhcp-script=/usr/lib/libvirt/libvirt_leaseshelper
-nobody      1962  0.2  1.9 163256 154244 ?       Ss   15:34   0:11 /usr/sbin/merecat -sn /var/www
-statd       1979  0.0  0.0   4640  2116 ?        Ss   15:34   0:00 /sbin/rpc.statd
-root        2014  0.0  0.0   5008   444 ?        Ss   15:34   0:00 /usr/sbin/rpc.mountd
-mysql       2180  1.2  4.8 2204164 392448 ?      Ssl  15:34   1:06 /usr/sbin/mysqld
-root        3497  0.0  0.0  43104  4868 ?        Ss   15:34   0:00 /usr/lib/postfix/sbin/master -w
-systemd+     774  0.2  0.1  20492 13184 ?        Ss   15:34   0:11 /lib/systemd/systemd-resolved
-nobody      8380  0.4  3.7 316856 302568 ?       Ss   15:41   0:21 /usr/sbin/merecat
-prometh+     965  0.0  0.1 1170244 13620 ?       Ssl  15:34   0:00 /usr/bin/prometheus-node-exporter
+1
+1286
+1539
+1814
+1962
+1979
+2014
+2180
+3497
+774
+8380
+965
 ```
+    - `sudo netstat -tlnp`
+        - Helps with displaying the PIDs of Listening Programs  
+        - `-tlnp`: TCP+Listening+Numeric+Programs 
+    - `awk '{print $7}'| grep / | cut -f1 -d/` 
+        - Helps printing PIDs of Listening Programs 
+        - `awk '{print $7}': Prints the seventh column of 'PIDs/Program Name'
+        - `grep / | cut -f1 -d/`: Filtering is done on the basis of `PID/Program` & First field for getting PID is printed before every "/"
+        - `sort -u`: The output is uniquely sorted to remove duplicate outputs 
 
-## Finding Package Names From Binaries 
-- Use binaries from previous step to find their package name:
-    - These packages will be used with `dlocate`
+
+## For retrieving the required files 
+
+### Finding Files From Process Details With PS
+
+`ps -aux`: `sudo netstat -tulnp | awk '{print $7}' | grep / | cut -d/ -f1 | sort -u | while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print}'; done`
 ```
-sudo netstat -tulnp | awk '{print $7}' | grep / | cut -d/ -f1 | sort -u | while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print $11}' | sort -u; done | xargs -I {} dpkg -S {} | cut -f1 -d:
+libvirt+    1814  0.0  0.0  11256  1320 ?        S    Mar07   0:00 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/default.conf --leasefile-ro --dhcp-script=/usr/lib/libvirt/libvirt_leaseshelper
+mysql       2180  0.5  2.3 2204164 189296 ?      Ssl  Mar07   6:14 /usr/sbin/mysqld
+nobody      1962  0.1  1.7 163256 142340 ?       Ss   Mar07   1:15 /usr/sbin/merecat -sn /var/www
+nobody      8380  0.2  3.5 316856 281704 ?       Ss   Mar07   2:25 /usr/sbin/merecat
+postgres    1539  0.0  0.2 224164 17476 ?        Ss   Mar07   0:02 /usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/16/main -c config_file=/etc/postgresql/16/main/postgresql.conf
+prometh+     965  0.0  0.0 1170244 3500 ?        Ssl  Mar07   0:00 /usr/bin/prometheus-node-exporter
+root           1  0.0  0.1 171096 12624 ?        Ss   Mar07   0:19 /sbin/init splash
+root        1286  0.0  0.0  37900  7152 ?        Ss   Mar07   0:00 /usr/sbin/cupsd -l
+root        2014  0.0  0.0   5008   304 ?        Ss   Mar07   0:00 /usr/sbin/rpc.mountd
+root        3497  0.0  0.0  43104  2156 ?        Ss   Mar07   0:00 /usr/lib/postfix/sbin/master -w
+statd       1979  0.0  0.0   4640  1832 ?        Ss   Mar07   0:00 /sbin/rpc.statd
+systemd+     774  0.0  0.1  21020  8228 ?        Ss   Mar07   0:46 /lib/systemd/systemd-resolved
+```
+    - `while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print}'; done'
+        - `while read pid; do ps -aux`: Initiating looping for entering each PID into pid variable & prints all listing processes in system
+        - `awk -v pid="$pid" '$2 == pid {print}'; done`: Output of `ps -aux` is filtered based on the second column of PID & entire output is printed - Loop closed with `; done`
+    - Detailed output can be accessed from [here]()
 
-Output:
+### Listing Files With LSOF
+`lsof | grep <listening program from netstat>` 
+```
+rsyslogd    1075   1139 rs:main            syslog    6u     unix 0xffff9c57896a6000       0t0      28075 /var/spool/postfix/dev/log type=DGRAM (UNCONNECTED)
+master      3497                             root  cwd       DIR                8,2      4096    2658612 /var/spool/postfix
+master      3497                             root  txt       REG                8,2     47496    9192559 /usr/lib/postfix/sbin/master
+master      3497                             root  mem       REG                8,2    303320    9192545 /usr/lib/postfix/libpostfix-util.so
+master      3497                             root  mem       REG                8,2    318952    9192542 /usr/lib/postfix/libpostfix-global.so
+master      3497                             root   10uW     REG                8,2        33    2658969 /var/spool/postfix/pid/master.pid
+master      3497                             root   11uW     REG                8,2        33    2658970 /var/lib/postfix/master.lock
+qmgr        3510                          postfix  cwd       DIR                8,2      4096    2658612 /var/spool/postfix
+qmgr        3510                          postfix  rtd       DIR                8,2      4096          2 /
+qmgr        3510                          postfix  txt       REG                8,2     67968    9192560 /usr/lib/postfix/sbin/qmgr
+[. . .]
+```
+    - `lsof`: Displays "List of opened files" and filters it on the basis of Listening Program Name
+    - Detailed output can be accessed from [here]()
+
+### Retrieving Files From SysCalls Using STRACE
+`strace -f <executed command from ps>` or `strace -o output.txt -fe openat <executed command from ps>`
+```
+537291 openat(AT_FDCWD, "/usr/lib/mysql/private/glibc-hwcaps/x86-64-v3/libssl.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+537291 openat(AT_FDCWD, "/usr/lib/mysql/private/glibc-hwcaps/x86-64-v2/libssl.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+537291 openat(AT_FDCWD, "/usr/lib/mysql/private/libssl.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+537291 openat(AT_FDCWD, "/usr/sbin/../lib/mysql/private/glibc-hwcaps/x86-64-v3/libssl.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+537291 openat(AT_FDCWD, "/usr/sbin/../lib/mysql/private/glibc-hwcaps/x86-64-v2/libssl.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+537291 openat(AT_FDCWD, "/usr/sbin/../lib/mysql/private/libssl.so.3", O_RDONLY|O_CLOEXEC) = -1 ENOENT (No such file or directory)
+537291 openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+537291 openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libssl.so.3", O_RDONLY|O_CLOEXEC) = 3
+[. . .]
+```
+    - Saving all OpenAt SysCalls into an output file
+        - `strace -o output.txt`: Save the output of strace into a file
+        - `-fe openat`: `f` for child-processes & `e` for retrieving only OpenAt SysCall as the expression
+
+### Finding Package Names Using DPKG
+`sudo netstat -tulnp | awk '{print $7}' | grep / | cut -d/ -f1 | sort -u | while read pid; do ps -aux | awk -v pid="$pid" '$2 == pid {print $11}' | sort -u; done | xargs -I {} dpkg -S {} | cut -f1 -d:`
+```
 systemd-sysv
 cups-daemon
 postgresql-16
 dnsmasq-base
 merecat
 nfs-common
-netperf
 nfs-kernel-server
 mysql-community-server-core
 postfix
 systemd-resolved
+merecat
 prometheus-node-exporter
 ```
+    - For retrieving the package name from the binaries
+        -  `xargs -I {} dpkg -S {}`: [`xargs -I`](https://stackoverflow.com/questions/68088351/what-is-the-syntax-for-xargs-i-flag-argument) captures the output and places it after [`dpkg -S`](https://phoenixnap.com/kb/dpkg-command) for Searching (-S) its package names 
+        - `cut -f1 -d:`: For retrieving only the package names out of `packageName: packageBinary` output
 
-## Finding Data And Conf Directories Using Dlocate  
--  The`dlocate` tool helps with viewing dpkg information & acts as an alternative for `dpkg -L` or `dpkg -S`:
+### Locating Most Files Using DLOCATE
+`dlocate <pkg>, dlocate --conf <pkg>, dlocate --lsdir <pkg>`
 ```
-dlocate --lsdir systemd-sysv
-dlocate --conf systemd-sysv
+$ dlocate postfix
+postfix: /.
+postfix: /etc
+postfix: /etc/init.d
+postfix: /etc/init.d/postfix
+postfix: /etc/insserv.conf.d
+postfix: /etc/insserv.conf.d/postfix
+postfix: /etc/network
+postfix: /etc/network/if-down.d
+postfix: /etc/network/if-down.d/postfix
+postfix: /etc/network/if-up.d
+postfix: /etc/network/if-up.d/postfix
+postfix: /etc/postfix
+postfix: /etc/postfix/dynamicmaps.cf.d
+[. . . ]
 
-dlocate --lsdir cups-daemon
-dlocate --conf cups-daemon
+$ dlocate --conf postfix
+/etc/init.d/postfix
+/etc/insserv.conf.d/postfix
+/etc/network/if-down.d/postfix
+/etc/network/if-up.d/postfix
+/etc/postfix/post-install
+/etc/postfix/postfix-files
+/etc/postfix/postfix-script
+/etc/ppp/ip-down.d/postfix
+/etc/ppp/ip-up.d/postfix
+/etc/resolvconf/update-libc.d/postfix
+/etc/rsyslog.d/postfix.conf
+/etc/ufw/applications.d/postfix
 
-dlocate --lsdir dnsmasq-base
-dlocate --conf dnsmasq-base
-
-dlocate --lsdir merecat
-dlocate --conf merecat
-
-dlocate --lsdir nfs-common
-dlocate --conf nfs-common
-
-dlocate --lsdir netperf
-dlocate --conf netperf
-
-dlocate --lsdir nfs-kernel-server
-dlocate --conf nfs-kernel-server
-
-dlocate --lsdir mysql-community-server-core 
-dlocate --conf mysql-community-server-core
-
-dlocate --lsdir postfix 
-dlocate --conf postfix
-
-dlocate --lsdir systemd-resolved
-dlocate --conf systemd-resolved
-
-dlocate --lsdir prometheus-node-exporter
-dlocate --conf prometheus-node-exporter
+$ dlocate --lsdir postfix
+/.
+/etc
+/etc/init.d
+/etc/insserv.conf.d
+/etc/network
+/etc/network/if-down.d
+/etc/network/if-up.d
+/etc/postfix
+/etc/postfix/dynamicmaps.cf.d
+/etc/postfix/postfix-files.d
+/etc/postfix/sasl
+/etc/ppp
+/etc/ppp/ip-down.d
+/etc/ppp/ip-up.d
+[. . .]
 ```
+    - From the previous step, the package names are placed after each command for retrieving the required files
+        - `dlocate <pkg>`: To "list records that match either package or files names" - Records matching package name are displayed
+        - `dlocate --conf <pkg>`: To "list conffiles in package"
+        - `dlocate --lsdir <pkg>`: To "list only the directories in package"
 
-## Finding Remaining Logs From Lsof And Syslog   
-- Using the `list opened files` tool, the remaining logs were retrieved:
+### Retrieving Remaining Logs From SysLog
+`grep <service from netstat> /var/log/syslog`
 ```
-sudo lsof | grep postgres | grep log
-sudo lsof | grep mysqld | grep log
-cat /var/log/syslog
+$ grep rpc.statd /var/log/syslog
+2024-03-05T12:57:51.802190+05:30 yashanand systemd[1]: Stopping rpc-statd.service - NFS status monitor for NFSv2/3 locking....
+2024-03-05T12:57:52.064752+05:30 yashanand systemd[1]: rpc-statd.service: Deactivated successfully.
+2024-03-05T12:57:52.065052+05:30 yashanand systemd[1]: Stopped rpc-statd.service - NFS status monitor for NFSv2/3 locking..
+2024-03-05T12:58:43.677337+05:30 yashanand systemd[1]: Starting rpc-statd.service - NFS status monitor for NFSv2/3 locking....
+2024-03-05T12:58:43.715569+05:30 yashanand rpc.statd[2523]: Version 2.6.2 starting
+2024-03-05T12:58:43.715683+05:30 yashanand rpc.statd[2523]: Flags: TI-RPC 
+2024-03-05T12:58:43.725150+05:30 yashanand systemd[1]: Started rpc-statd.service - NFS status monitor for NFSv2/3 locking..
+2024-03-05T12:58:43.847260+05:30 yashanand systemd[1]: Starting rpc-statd-notify.service - Notify NFS peers of a restart...
+[. . .]
 ```
-
-## Finding Remaining Configurations From Strace   
-- Utilised the OpenAt() Syscalls from the strace output for finding remaining files from each executed command of the remaining Programs:
-```
-sudo strace -o mysql.txt -f /usr/sbin/mysqld
-strace -f /usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/16/main -c config_file=/etc/postgresql/16/main/postgresql.conf
-```
-
+    - The remaining logs yet to be retrieved for the Listening Programs can be filtered out from `/var/log/syslog`
+    - Some applications by default store their logs in here but it is also the "common file for logs" - Studied more on it from [here](https://www.logicmonitor.com/blog/what-is-syslog#:~:text=Syslog%2C%20an%20abbreviation%20for%20system,different%20parts%20of%20the%20system.)
