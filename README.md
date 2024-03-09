@@ -220,7 +220,7 @@ The Log, Binary, Configuration and Data paths that I was able to retrieve using 
 |-------|-------------------|--------------|-----------------------|------------------------------|--------------------|---------------------|
 | 1     | init              | systemd-sysv | /sbin/init            | N/A                          | /var/log/syslog    | N/A                 |
 | 2     | cupsd             | cups-daemon  | /usr/sbin/cupsd       | /etc/apparmor.d/usr.sbin.cupsd<br>/etc/cups/cups-files.conf<br>/etc/init.d/cups<br>/etc/logrotate.d/cups-daemon<br>/etc/pam.d/cups<br>/etc/ufw/applications.d/cups | /var/log/cups       | /usr/share/cups     |
-| 3     | postgres          | postgresql-16| /usr/lib/postgresql/16/bin/postgres | etc/postgresql/16/main/postgresql.conf | /var/log/postgresql/postgresql-16-main.log | /var/lib/postgresql/16/main |
+| 3     | postgres          | postgresql-16| /usr/lib/postgresql/16/bin/postgres | /etc/postgresql/16/main/postgresql.conf | /var/log/postgresql/postgresql-16-main.log | /var/lib/postgresql/16/main |
 | 4     | dnsmasq           | dnsmasq-base | /usr/sbin/dnsmasq     | /etc/dbus-1/system.d/dnsmasq.conf | /var/log/syslog     | /var/lib/misc       |
 | 5     | merecat           | merecat      | /usr/sbin/merecat     | /etc/merecat.conf            | /var/log/syslog     | /var/www            |
 | 6     | rpc.statd         | nfs-common   | /sbin/rpc.statd       | /etc/default/nfs-common<br>/etc/init.d/nfs-common<br>/etc/request-key.d/id_resolver.conf | /var/log/syslog     | /var/lib/nfs        |
